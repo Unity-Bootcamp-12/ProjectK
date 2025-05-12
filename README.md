@@ -5,7 +5,7 @@ Contact US Here
 -  공용 계정  :  projectk12th@gmail.com / 010-4810-7201
 -  오융택  :  yungtaekoh@gmail.com / 010-4810-7201
 -  이정균  :  wjdrbsdl@gmail.com / 010-2933-1655
--  박광호  :   / 010-6237-2956
+-  박광호  :  pkh2956@naver.com / 010-6237-2956
 -  이재훈  :  anrocksa@gmail.com / 010-2595-5993
 
 
