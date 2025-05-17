@@ -6,6 +6,7 @@ using UnityEngine;
 public class MasterDataManager :MonoBehaviour
 {
     public static MasterDataManager Instance;
+    public DropBoxTable DropBox;
     private Dictionary<int, ItemBase> masterItemDictionary;
 
     private void Awake()
@@ -14,6 +15,7 @@ public class MasterDataManager :MonoBehaviour
         {
             Instance = this;
             MakeMasterData();
+            DropBox = new();
         }
         else
         {
