@@ -78,7 +78,7 @@ public class Gun : NetworkBehaviour
         fireTransform = transform.Find("fireTransform");
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void SpawnBulletServerRpc(Vector3 inDirection, uint ownerId)
     {
         Bullet bullet = BulletPool.Instance.GetBullet();

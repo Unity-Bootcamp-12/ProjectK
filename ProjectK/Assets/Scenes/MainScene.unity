@@ -2134,6 +2134,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3087,6 +3088,10 @@ PrefabInstance:
       propertyPath: 'dropboxSpawnTransform.Array.data[72]'
       value: 
       objectReference: {fileID: 858426990}
+    - target: {fileID: 7644462576899125716, guid: 72011cd94ec7ac24aa13153a8b2b9e27, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3223046663
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

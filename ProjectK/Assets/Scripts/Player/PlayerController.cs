@@ -38,7 +38,7 @@ public class PlayerController : NetworkBehaviour, IPlayerInputReceiver, ITakeDam
     private float slowSpeed; // 느리게 걷는 속도
     private float runSpeed; // 뛰는 속도
     private PlayerMove playerMove; // 플레이어 무브 클래스
-    private Gun playerGun;
+    public Gun playerGun;
     private bool isAimed;
     public Vector3 mouseWorldPosition;
     public static event Action<Vector3> OnMousePositionUpdated;
@@ -154,11 +154,17 @@ public class PlayerController : NetworkBehaviour, IPlayerInputReceiver, ITakeDam
         ChangeGunStateServerRpc(GunState.Attack);
 
         Vector3 direction = playerSight.GetRandomSpreadDirection();
+        if (TryGetComponent<BotInputProvider>(out var ip))
+        {
+            Debug.Log("Bot Fire!");
+        }
+
         playerGun.Fire(direction);
+        Debug.Log(direction);
     }
 
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void ChangeGunStateServerRpc(GunState inState)
     {
         if (netCurrentPlayerState.Value == PlayerState.Die)

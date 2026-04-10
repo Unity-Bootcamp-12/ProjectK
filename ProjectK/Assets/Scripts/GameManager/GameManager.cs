@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
+using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 public enum GameState
 {
@@ -44,7 +45,23 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private GameObject dropboxPrefab;
     public List<Transform> dropboxSpawnTransform;
 
+    private void SpawnBots()
+    {
+        if (!IsHost) return;
 
+        foreach (var pair in players)
+        {
+            PlayerController pc = pair.Key;
+            if (pc == myPlayer) continue;
+
+            Vector2 random = UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(8f, 15f);
+            Vector3 pos = myPlayer.transform.position + new Vector3(random.x, 0f, random.y);
+            pc.SetSpawnPositionRpc(pos);
+
+            BotInputProvider bot = pc.gameObject.AddComponent<BotInputProvider>();
+            bot.target = myPlayer.transform;
+        }
+    }
     #region Unity Methods
     private void Awake()
     {
@@ -239,6 +256,7 @@ public class GameManager : NetworkBehaviour
         AssignPlayerPosition();
         ChangeGameState(GameState.Play);
         ApplyStartUIRpc();
+        SpawnBots();
     }
 
     public void RequestStartGame()
